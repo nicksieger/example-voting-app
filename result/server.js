@@ -7,6 +7,9 @@ var express = require('express'),
     io = require('socket.io')(server);
 
 var port = process.env.PORT || 4000;
+var optionA = process.env.OPTION_A || 'Cats';
+var optionB = process.env.OPTION_B || 'Dogs';
+
 
 io.on('connection', function (socket) {
 
@@ -70,6 +73,9 @@ app.use(express.static(__dirname + '/views'));
 app.get('/', function (req, res) {
   res.sendFile(path.resolve(__dirname + '/views/index.html'));
 });
+app.get('/options', function (req, res) {
+  res.json({optionA, optionB});
+})
 
 server.listen(port, function () {
   var port = server.address().port;
