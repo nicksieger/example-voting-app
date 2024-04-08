@@ -7,6 +7,7 @@ services:
     build: 
       context: ./vote
       target: dev
+    # env_file: options.env
     depends_on:
       redis:
         condition: service_healthy
@@ -28,6 +29,7 @@ services:
     build: ./result
     # use nodemon rather than node for local dev
     entrypoint: nodemon --inspect=0.0.0.0 server.js
+    # env_file: options.env
     depends_on:
       db:
         condition: service_healthy 
