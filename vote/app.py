@@ -49,6 +49,7 @@ def hello():
             option_b=option_b,
             hostname=hostname,
             vote=vote,
+            first_option=random.choice(["option_a", "option_b"]),
         ))
 
     resp.set_cookie('vote', json.dumps(vote_data))
